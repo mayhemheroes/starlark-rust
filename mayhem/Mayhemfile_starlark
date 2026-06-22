@@ -1,0 +1,7 @@
+project: starlark-rust
+target: starlark
+testsuite:
+  - file:///mayhem/mayhem/testsuite/starlark
+cmds:
+  - cmd: /mayhem/starlark-fuzz
+    libfuzzer: true
