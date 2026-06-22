@@ -1,0 +1,10 @@
+# Mayhem target: starlark-rust's fuzzer (libFuzzer, built by mayhem/build.sh via cargo-fuzz at
+# /mayhem/starlark-fuzz). Parses + evaluates an arbitrary Starlark program (AstModule::parse ->
+# Evaluator::eval_module). Bootstrap seeds live in mayhem/testsuite/starlark/ but are NOT pinned via
+# a `testsuite:` directive (issue #124: a pinned file:// testsuite re-seeds every run and blocks
+# Mayhem from accumulating its own corpus). Mayhem picks the dir up as bootstrap on first run.
+project: starlark-rust
+target: starlark
+cmds:
+  - cmd: /mayhem/starlark-fuzz
+    libfuzzer: true
